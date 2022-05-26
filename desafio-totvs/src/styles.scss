@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material/' as mat;
+@include mat.core();
+
+$customtheme-primary: mat.define-palette(mat.$green-palette, 600);
+$customtheme-accent: mat.define-palette(mat.$grey-palette, 600);
+$customtheme-warn: mat.define-palette(mat.$red-palette, 800);
+
+$customtheme-theme: mat.define-light-theme((
+  color: (
+    primary: $customtheme-primary,
+    accent: $customtheme-accent,
+    warn: $customtheme-warn,
+  )
+));
+
+@include mat.all-component-themes($customtheme-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.desafiototvs-card .mat-expansion-panel-header-description{
+    flex-grow: 0;
+    padding-top: 3px;
+}
+
+.desafiototvs-card .mat-expansion-panel-header,
+.desafiototvs-card .mat-expansion-panel-header:hover{
+    background: #e3e3e3 !important;
+}
+
+.desafiototvs-card .mat-expansion-panel-body{
+  padding: 24px 16px;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+

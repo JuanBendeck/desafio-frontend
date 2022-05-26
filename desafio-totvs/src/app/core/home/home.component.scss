@@ -1,0 +1,52 @@
+
+.home-wrapper{
+    background: #0083e5;
+    height: 180px;
+    width: 100%;
+    // margin-top: -50px;
+    border-bottom-left-radius: 150px;
+    border-bottom-right-radius: 150px;
+}
+
+.home-container{
+    padding: 15px;
+}
+
+.jb-name{
+    margin-right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.subtitle{
+    margin-top: 10px;
+}
+
+.subtitle, mat-label{
+    font-size: 15px;
+    color: white;
+}
+
+.autocomplete-container{
+    margin-top: 20px;
+}
+
+.country-autocomplete{
+    width: 50%;
+}
+
+.country-input{
+    width: calc(100% - 120px);
+    height: 35px;
+    border: 1px solid black;
+    padding: 0px 5px;
+}
+
+.option-img{
+    height: 25px;
+    width: 50px;
+    object-fit: contain;
+    margin-right: 10px;
+}

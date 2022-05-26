@@ -1,0 +1,61 @@
+<div class="country-card-wrapper">
+    <ng-container *ngIf="!selectedCountry.length">
+        <app-emptystate></app-emptystate>
+    </ng-container>
+    <div *ngIf="selectedCountry.length">
+        <div *ngFor="let country of selectedCountry">
+
+            <mat-accordion>     
+                <mat-expansion-panel (opened)="country.panelOpenState = true"
+                                     (closed)="country.panelOpenState = false"
+                                     class="desafiototvs-card">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="card-header-container noselect" fxLayout="row" fxLayoutAlign="space-between center" fxFlex="40">
+                            <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
+                                <div fxFlex="noshrink" style="background-color: transparent;">{{country.name}} - {{country.alpha2Code}}</div>
+                                <div fxLayout="column" fxLayoutAlign="center center" class="card-img">
+                                    <img src="{{country.flag}}"/>
+                                </div>
+                            </div>
+                        </div>               
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <div class="noselect">{{country.panelOpenState ? 'Hide information' : 'Show information'}}</div>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div fxLayout="row" fxLayoutAlign="space-between center" class="noselect">
+                    <div fxFlex="50">
+                        <div class="first-line space-bottom" fxLayout="row wrap" fxLayoutAlign="space-between center">
+                            <div *ngIf="country.region">Region: {{country.region}}</div>
+                            <div *ngIf="country.capital">Capital City: {{country.capital}}</div>
+                            <div *ngIf="country.callcode">Calling Code: {{country.callcode}}</div>
+                        </div>            
+                        <div class="space-bottom">A person from this country is called <strong>{{country.demonym}}</strong></div>
+                        <div *ngIf="country.currencies" class="space-bottom">
+                            {{country.currencies.length > 1 ? 'Currencies:' : 'Currency:'}} 
+                            <div *ngFor="let currencies of country.currencies">- {{currencies.name}}</div>
+                        </div>  
+                        <div *ngIf="country.languages">
+                            {{country.languages.length > 1 ? 'Languages spoken:' : 'Language spoken:'}} 
+                            <div *ngFor="let lang of country.languages">- {{lang.name}}</div>
+                        </div>                              
+                    </div>
+                    <div fxFlex="50" fxLayout="column" fxLayoutAlign="center end">
+                        <button color="warn" mat-raised-button (click)="openDialog(confirmationModal)">MORE INFO</button>
+                    </div>
+                  </div>
+                  
+                </mat-expansion-panel>
+              </mat-accordion>
+        
+              <ng-template #confirmationModal>
+                  <div class="dialog-title">Do you want more information about <strong>{{country.name}}</strong> ?</div>
+                  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+                      <button color="accent" mat-flat-button [mat-dialog-close]="'Request cancelled!'">CANCEL</button>
+                      <button color="primary" mat-raised-button [mat-dialog-close]="'Request confirmed!'">SEND INFO REQUEST</button>
+                  </div>
+              </ng-template>
+        </div>
+    </div>    
+</div>

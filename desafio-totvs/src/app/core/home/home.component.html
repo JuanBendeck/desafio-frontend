@@ -1,0 +1,35 @@
+<div class="home-wrapper">
+  <div class="home-container">
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+      <div class="jb-name">JUAN BENDECK&nbsp; x</div> <div><img src="https://es.totvs.com/wp-content/uploads/2019/09/logo.png"/></div>
+    </div>
+    <div class="subtitle" fxLayout="row" fxLayoutAlign="center center">
+      <div>Get some information about all the countries of the world. If it's not enough, you can always ask for more!</div>
+    </div>
+    
+    <div fxLayout="row" fxLayoutAlign="center center" class="autocomplete-container">
+    
+        <form class="country-autocomplete" appearance="fill">
+            <mat-label>Countries List &nbsp;   </mat-label>
+            <input matInput
+                   aria-label="Country"
+                   [matAutocomplete]="auto"
+                   [formControl]="countryCtrl"
+                   class="country-input">
+            <mat-autocomplete #auto="matAutocomplete" 
+            (optionSelected)="selectedOption($event.option.value)" [displayWith]="displayFn">
+              <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                  <img class="option-img" aria-hidden [src]="country.flag">
+                  <span style="margin-right: 5px">{{country.name}}  |</span> 
+                  <small>Region: {{country.region}}</small>
+                </div>
+                
+              </mat-option>
+            </mat-autocomplete>
+          </form>
+    </div>
+  </div>  
+</div>
+
+<app-cards [selectedCountry]="selectedCountries"></app-cards>
